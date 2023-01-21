@@ -37,8 +37,7 @@
   </a>
 </p>
 
-![image](https://user-images.githubusercontent.com/52851879/211003617-2df2e292-a6a0-48d1-8842-2d59eb387248.png)
-
+![Screenshot 2023-01-21 121103](https://user-images.githubusercontent.com/52851879/213847753-896877d4-ac2a-4da4-9efc-3c30438f3f8b.png)
 
 ## Installation
 
