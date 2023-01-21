@@ -33,7 +33,7 @@ jobs:
         id: downloadfile # Remember to give an ID if you need the output filename
         name: Download rootfs
         with:
-          url: "https://github.com/VsTechDev/Arch-WSL/releases/download/v37.0.1.0/rootfs.tar.gz"
+          url: "https://github.com/VsTechDev/Arch-WSL/releases/download/v1.0.0.0/rootfs.tar.gz"
           target: "x64/"
 
       - name: Write file from base64 string
