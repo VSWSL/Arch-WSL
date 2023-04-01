@@ -1,6 +1,6 @@
 <div align="center">
-  <a href="https://github.com/VsTechDev/Arch-WSL">
-    <img src="https://github.com/VsTechDev/Arch-WSL/blob/main/ArchWSL-Appx/Assets/StoreLogo.scale-150.png?raw=true" alt="Logo" width="80" height="80">
+  <a href="https://github.com/VSWSL/Arch-WSL">
+    <img src="https://github.com/VSWSL/Arch-WSL/blob/main/ArchWSL-Appx/Assets/StoreLogo.scale-150.png?raw=true" alt="Logo" width="80" height="80">
   </a>
 
   <h3 align="center">Arch WSL</h3>
@@ -8,32 +8,32 @@
   <p align="center">
     This is an unofficial Arch WSL based on the rootfs of arch docker images with a few packages installed to make your life easy
     <br />
-    <a href="https://github.com/VsTechDev/Arch-WSL#readme"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/VSWSL/Arch-WSL#readme"><strong>Explore the docs »</strong></a>
     <br />
     <br />
     <a href="https://apps.microsoft.com/store/detail/arch-wsl/9NPCP8DRCHSN">Download</a>
     ·
-    <a href="https://github.com/VsTechDev/Arch-WSL/issues">Report Bug</a>
+    <a href="https://github.com/VSWSL/Arch-WSL/issues">Report Bug</a>
     ·
-    <a href="https://github.com/VsTechDev/Arch-WSL/issues">Request Feature</a>
+    <a href="https://github.com/VSWSL/Arch-WSL/issues">Request Feature</a>
   </p>
 </div>
 
 <p align="center">
-  <a herf="https://github.com/VsTechDev/Arch-WSL/graphs/contributors">
-    <img src="https://img.shields.io/github/contributors/VsTechDev/Arch-WSL" />
+  <a herf="https://github.com/VSWSL/Arch-WSL/graphs/contributors">
+    <img src="https://img.shields.io/github/contributors/VSWSL/Arch-WSL" />
   </a>
-  <a herf="https://github.com/VsTechDev/Arch-WSL/network/members">
-    <img src="https://img.shields.io/github/forks/VsTechDev/Arch-WSL" />
+  <a herf="https://github.com/VSWSL/Arch-WSL/network/members">
+    <img src="https://img.shields.io/github/forks/VSWSL/Arch-WSL" />
   </a>
-  <a herf="https://github.com/VsTechDev/Arch-WSL/stargazers">
-    <img src="https://img.shields.io/github/stars/VsTechDev/Arch-WSL" />
+  <a herf="https://github.com/VSWSL/Arch-WSL/stargazers">
+    <img src="https://img.shields.io/github/stars/VSWSL/Arch-WSL" />
   </a>
-  <a herf="https://github.com/VsTechDev/Arch-WSL/issues">
-    <img src="https://img.shields.io/github/issues/VsTechDev/Arch-WSL" />
+  <a herf="https://github.com/VSWSL/Arch-WSL/issues">
+    <img src="https://img.shields.io/github/issues/VSWSL/Arch-WSL" />
   </a>
-  <a herf="https://github.com/VsTechDev/Arch-WSL/blob/master/LICENSE.md">
-    <img src="https://img.shields.io/github/license/VsTechDev/Arch-WSL" />
+  <a herf="https://github.com/VSWSL/Arch-WSL/blob/master/LICENSE.md">
+    <img src="https://img.shields.io/github/license/VSWSL/Arch-WSL" />
   </a>
 </p>
 
@@ -43,7 +43,7 @@
 
 - Make sure WSL is enabled in you system - https://learn.microsoft.com/en-us/windows/wsl/install
 
-- You can install Arch WSL from [Microsoft Store](https://apps.microsoft.com/store/detail/arch-wsl/9NPCP8DRCHSN) ***OR*** if you don't want to use Microsoft Store then download the latest msix package from [Release Page](https://github.com/VsTechDev/Arch-WSL/releases/latest)
+- You can install Arch WSL from [Microsoft Store](https://apps.microsoft.com/store/detail/arch-wsl/9NPCP8DRCHSN) ***OR*** if you don't want to use Microsoft Store then download the latest msix package from [Release Page](https://github.com/VSWSL/Arch-WSL/releases/latest)
 
 ***Note*** - to install manually from the msix package you need to install the .cer file first to the "Trusted Root Certificate Store" of the "local machine"
 
@@ -85,6 +85,6 @@ https://user-images.githubusercontent.com/52851879/211007722-3743c1a9-62a4-474c-
 
 ### Root FS
 
-- The main Root FS file this app is based on is at - https://github.com/VsTechDev/Arch-WSL-RootFS
+- The main Root FS file this app is based on is at - https://github.com/VSWSL/Arch-WSL-RootFS
 
 - It is based on Arch Docker Image with few tweaks and pre-installed dependencies
