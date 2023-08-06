@@ -10,7 +10,7 @@ on:
 env:
   # Path to the solution file relative to the root of the project.
   SOLUTION_FILE_PATH: .
-  APPX_CERTIFICATE_PASSWORD: ""
+  APPX_CERTIFICATE_PASSWORD: ${{ secrets.APPX_CERTIFICATE_PASSWORD }}
 
 permissions:
   contents: read
