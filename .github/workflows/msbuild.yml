@@ -43,9 +43,8 @@ jobs:
         with:
           url: ${{matrix.link}}
           target: ${{matrix.arch}}
-
-      - run: mv ${{matrix.arch}}/${{needs.downloadfile.outputs.filename}}  ${{matrix.arch}}/rootfs.tar.gz
-
+          filename: rootfs.tar.gz
+          
       - name: Write file from base64 string
         id: write_file
         uses: timheuer/base64-to-file@v1
