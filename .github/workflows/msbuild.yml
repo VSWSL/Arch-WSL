@@ -9,7 +9,7 @@ on:
 env:
   # Path to the solution file relative to the root of the project.
   SOLUTION_FILE_PATH: .
-  APPX_CERTIFICATE_PASSWORD: ${{secrets.APPX_CERTIFICATE_PASSWORD}}
+  APPX_CERTIFICATE_PASSWORD: ""
 
 permissions:
   contents: read
@@ -17,7 +17,9 @@ permissions:
 jobs:
   build:
     runs-on: windows-latest
-
+    strategy:
+      matrix:
+        arch: [arm64,x64]
     steps:
       - uses: actions/checkout@v3
 
@@ -30,11 +32,21 @@ jobs:
           python-version: "3.11"
 
       - uses: suisei-cn/actions-download-file@v1
-        id: downloadfile # Remember to give an ID if you need the output filename
-        name: Download rootfs
+        id: downloadfilex64 # Remember to give an ID if you need the output filename
+        name: Download rootfs 
+        if: ${{matrix.arch == x64}}
         with:
           url: "https://github.com/VsTechDev/Arch-WSL/releases/download/v1.0.0.0/rootfs.tar.gz"
           target: "x64/"
+          
+      - uses: suisei-cn/actions-download-file@v1
+        id: downloadfilearm # Remember to give an ID if you need the output filename
+        name: Download rootfs
+        if: ${{matrix.arch == arm64}}
+        with:
+          url: "https://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz"
+          target: "arm64/"
+          
 
       - name: Write file from base64 string
         id: write_file
@@ -53,4 +65,4 @@ jobs:
 
       - name: Build solution
         working-directory: ${{env.GITHUB_WORKSPACE}}
-        run: python build.py --target=build --config=debug --platform=x64
+        run: python build.py --target=build --config=debug --platform=${{matrix.arch}}
