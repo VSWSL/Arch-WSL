@@ -20,11 +20,7 @@ jobs:
     runs-on: windows-latest
     strategy:
       matrix: 
-        include:
-          - arch : arm64
-            link : http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
-          - arch : x64
-            link : https://github.com/VsTechDev/Arch-WSL/releases/download/v1.0.0.0/rootfs.tar.gz
+        arch: [arm64,x64]
           
     steps:
       - uses: actions/checkout@v3
@@ -41,7 +37,7 @@ jobs:
         id: downloadfile # Remember to give an ID if you need the output filename
         name: Download rootfs 
         with:
-          url: ${{matrix.link}}
+          url: https://github.com/VSWSL/Arch-WSL/releases/latest/download/rootfs.${{matrix.arch}}.tar.gz
           target: ${{matrix.arch}}
           filename: rootfs.tar.gz
           
