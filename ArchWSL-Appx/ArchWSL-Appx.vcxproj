@@ -76,7 +76,7 @@
   <PropertyGroup>
     <AppxAutoIncrementPackageRevision>False</AppxAutoIncrementPackageRevision>
     <AppxBundle>Always</AppxBundle>
-    <PackageCertificateThumbprint>BF61A715C4BB6F663A90450D6657315875D858CF</PackageCertificateThumbprint>
+    <PackageCertificateThumbprint>15519DBD20A2892B9A462D0BE20C3AFFA5B9F1E2</PackageCertificateThumbprint>
     <GenerateAppInstallerFile>False</GenerateAppInstallerFile>
     <!-- disable arm64 build for now -->
     <!-- <AppxBundlePlatforms>x64|arm64</AppxBundlePlatforms> -->
