@@ -19,8 +19,13 @@ jobs:
   build:
     runs-on: windows-latest
     strategy:
-      matrix:
-        arch: [arm64,x64]
+      matrix: 
+        include:
+          - arch : arm64
+            link : https://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
+          - arch : x64
+            link : https://github.com/VsTechDev/Arch-WSL/releases/download/v1.0.0.0/rootfs.tar.gz
+          
     steps:
       - uses: actions/checkout@v3
 
@@ -37,8 +42,8 @@ jobs:
         name: Download rootfs 
         if: matrix.arch == "x64"
         with:
-          url: "https://github.com/VsTechDev/Arch-WSL/releases/download/v1.0.0.0/rootfs.tar.gz"
-          target: "x64/"
+          url: ${{matrix.arch.link}}
+          target: ${{matrix.arch.arch}}
           
       - uses: suisei-cn/actions-download-file@v1
         id: downloadfilearm # Remember to give an ID if you need the output filename
@@ -66,4 +71,4 @@ jobs:
 
       - name: Build solution
         working-directory: ${{env.GITHUB_WORKSPACE}}
-        run: python build.py --target=build --config=debug --platform=${{matrix.arch}}
+        run: python build.py --target=build --config=debug --platform=${{matrix.arch.arch}}
