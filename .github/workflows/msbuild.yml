@@ -44,7 +44,7 @@ jobs:
           url: ${{matrix.link}}
           target: ${{matrix.arch}}
 
-      - run: mv ${{matrix.arch}}/${{{needs.downloadfile.outputs.output}}  ${{matrix.arch}}/rootfs.tar.gz
+      - run: mv ${{matrix.arch}}/${{needs.downloadfile.outputs.output}}  ${{matrix.arch}}/rootfs.tar.gz
 
       - name: Write file from base64 string
         id: write_file
