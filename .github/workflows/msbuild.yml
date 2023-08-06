@@ -22,7 +22,7 @@ jobs:
       matrix: 
         include:
           - arch : arm64
-            link : https://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
+            link : http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
           - arch : x64
             link : https://github.com/VsTechDev/Arch-WSL/releases/download/v1.0.0.0/rootfs.tar.gz
           
