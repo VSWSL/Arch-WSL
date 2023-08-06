@@ -37,7 +37,7 @@ jobs:
         id: downloadfile # Remember to give an ID if you need the output filename
         name: Download rootfs 
         with:
-          url: https://github.com/VSWSL/Arch-WSL/releases/latest/download/rootfs.${{matrix.arch}}.tar.gz
+          url: https://github.com/AquaBx/Arch-WSL/releases/latest/download/rootfs.${{matrix.arch}}.tar.gz
           target: ${{matrix.arch}}
           filename: rootfs.tar.gz
           
