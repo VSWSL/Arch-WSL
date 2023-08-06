@@ -40,18 +40,9 @@ jobs:
       - uses: suisei-cn/actions-download-file@v1
         id: downloadfilex64 # Remember to give an ID if you need the output filename
         name: Download rootfs 
-        if: matrix.arch == "x64"
         with:
-          url: ${{matrix.arch.link}}
-          target: ${{matrix.arch.arch}}
-          
-      - uses: suisei-cn/actions-download-file@v1
-        id: downloadfilearm # Remember to give an ID if you need the output filename
-        name: Download rootfs
-        if: matrix.arch == "arm64"
-        with:
-          url: "https://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz"
-          target: "arm64/"
+          url: ${{matrix.link}}
+          target: ${{matrix.arch}}
           
 
       - name: Write file from base64 string
@@ -71,4 +62,4 @@ jobs:
 
       - name: Build solution
         working-directory: ${{env.GITHUB_WORKSPACE}}
-        run: python build.py --target=build --config=debug --platform=${{matrix.arch.arch}}
+        run: python build.py --target=build --config=debug --platform=${{matrix.arch}}
