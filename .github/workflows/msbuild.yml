@@ -33,7 +33,7 @@ jobs:
         with:
           python-version: "3.11"
 
-      - uses: suisei-cn/actions-download-file@v1
+      - uses: suisei-cn/actions-download-file@v1.4.0
         id: downloadfile # Remember to give an ID if you need the output filename
         name: Download rootfs 
         with:
