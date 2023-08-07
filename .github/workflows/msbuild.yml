@@ -5,11 +5,12 @@ on:
     branches: ["main"]
   pull_request:
     branches: ["main"]
+  workflow_dispatch:
 
 env:
   # Path to the solution file relative to the root of the project.
   SOLUTION_FILE_PATH: .
-  APPX_CERTIFICATE_PASSWORD: ${{secrets.APPX_CERTIFICATE_PASSWORD}}
+  APPX_CERTIFICATE_PASSWORD: ${{ secrets.APPX_CERTIFICATE_PASSWORD }}
 
 permissions:
   contents: read
@@ -17,7 +18,10 @@ permissions:
 jobs:
   build:
     runs-on: windows-latest
-
+    strategy:
+      matrix: 
+        arch: [arm64,x64]
+          
     steps:
       - uses: actions/checkout@v3
 
@@ -31,11 +35,12 @@ jobs:
 
       - uses: suisei-cn/actions-download-file@v1
         id: downloadfile # Remember to give an ID if you need the output filename
-        name: Download rootfs
+        name: Download rootfs 
         with:
-          url: "https://github.com/VsTechDev/Arch-WSL/releases/download/v1.0.0.0/rootfs.tar.gz"
-          target: "x64/"
-
+          url: https://github.com/VSWSL/Arch-WSL/releases/latest/download/rootfs.${{matrix.arch}}.tar.gz
+          target: ${{matrix.arch}}
+          filename: rootfs.tar.gz
+          
       - name: Write file from base64 string
         id: write_file
         uses: timheuer/base64-to-file@v1
@@ -53,4 +58,4 @@ jobs:
 
       - name: Build solution
         working-directory: ${{env.GITHUB_WORKSPACE}}
-        run: python build.py --target=build --config=debug --platform=x64
+        run: python build.py --target=build --config=release --platform=${{matrix.arch}}
