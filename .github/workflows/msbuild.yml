@@ -18,9 +18,6 @@ permissions:
 jobs:
   build:
     runs-on: windows-latest
-    strategy:
-      matrix:
-        arch: [arm64,x64]
 
     steps:
       - uses: actions/checkout@v4
@@ -35,10 +32,17 @@ jobs:
 
       - uses: suisei-cn/actions-download-file@v1.4.0
         id: downloadfile # Remember to give an ID if you need the output filename
-        name: Download rootfs
+        name: Download rootfs (x64)
         with:
-          url: https://github.com/VSWSL/Arch-WSL/releases/latest/download/rootfs.${{matrix.arch}}.tar.gz
-          target: ${{matrix.arch}}
+          url: https://github.com/VSWSL/Arch-WSL/releases/latest/download/rootfs.x64.tar.gz
+          target: x64
+          filename: rootfs.tar.gz
+
+      - uses: suisei-cn/actions-download-file@v1.4.0
+        name: Download rootfs (ARM64)
+        with:
+          url: https://github.com/VSWSL/Arch-WSL/releases/latest/download/rootfs.arm64.tar.gz
+          target: ARM64
           filename: rootfs.tar.gz
 
       - name: Write file from base64 string

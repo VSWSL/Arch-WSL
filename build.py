@@ -32,7 +32,7 @@ if len(sys.argv) > 1:
         elif sys.argv[i].startswith("--config="):
             MS_BUILD_CONFIG = sys.argv[i].split("=")[1].capitalize()
 
-BUILD_COMMAND = '"{}" {} /t:{} /m /nr:true /p:Configuration={};'
+BUILD_COMMAND = '"{}" {} /t:{} /m /nr:true /p:Configuration={}'
 
 BUILD_COMMAND = BUILD_COMMAND.format(
     MS_BUILD_PATH,
