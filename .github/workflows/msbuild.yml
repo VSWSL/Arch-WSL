@@ -62,4 +62,4 @@ jobs:
 
       - name: Build solution
         working-directory: ${{env.GITHUB_WORKSPACE}}
-        run: python build.py --target=build --config=release
+        run: MSBuild /t:ArchWSL.sln /m /nr:true /p:Configuration=Release /p:Platform=x64
