@@ -2,9 +2,9 @@ name: MSBuild
 
 on:
   push:
-    branches: ['main']
+    branches: ["main"]
   pull_request:
-    branches: ['main']
+    branches: ["main"]
   workflow_dispatch:
 
 env:
@@ -32,13 +32,22 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.11"
+
+      - name: Convert x64 to amd64
+        id: convert_x64
+        run: |
+          if ("${{ matrix.platform }}" -eq "x64") {
+              Write-Host "::set-output name=platform::amd64"
+          } else {
+              Write-Host "::set-output name=platform::${{ matrix.platform }}"
+          }
 
       - uses: suisei-cn/actions-download-file@v1.4.0
         id: downloadfile # Remember to give an ID if you need the output filename
         name: Download rootfs
         with:
-          url: https://github.com/VSWSL/Arch-WSL/releases/latest/download/rootfs.${{ matrix.platform }}.tar.gz
+          url: https://github.com/VSWSL/Arch-WSL-RootFS/releases/latest/download/rootfs.${{ steps.convert_x64.outputs.platform }}.tar.gz
           target: ${{ matrix.platform }}
           filename: rootfs.tar.gz
 
@@ -46,7 +55,7 @@ jobs:
         id: write_file
         uses: timheuer/base64-to-file@v1
         with:
-          fileName: 'ArchWSL-Appx-Test.pfx'
+          fileName: "ArchWSL-Appx-Test.pfx"
           encodedString: ${{ secrets.APPX_TEST_CERTIFICATE }}
 
       - name: Import certificate
