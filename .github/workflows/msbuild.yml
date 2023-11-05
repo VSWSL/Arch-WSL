@@ -2,9 +2,9 @@ name: MSBuild
 
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
   pull_request:
-    branches: ["main"]
+    branches: ['main']
   workflow_dispatch:
 
 env:
@@ -19,9 +19,10 @@ jobs:
   build:
     runs-on: windows-latest
     strategy:
-      matrix: 
-        arch: [arm64,x64]
-          
+      matrix:
+        platform: [arm64, x64]
+        target: [debug, release]
+
     steps:
       - uses: actions/checkout@v4
 
@@ -31,31 +32,31 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
-          python-version: "3.11"
+          python-version: '3.11'
 
       - uses: suisei-cn/actions-download-file@v1.4.0
         id: downloadfile # Remember to give an ID if you need the output filename
-        name: Download rootfs 
+        name: Download rootfs
         with:
-          url: https://github.com/VSWSL/Arch-WSL/releases/latest/download/rootfs.${{matrix.arch}}.tar.gz
-          target: ${{matrix.arch}}
+          url: https://github.com/VSWSL/Arch-WSL/releases/latest/download/rootfs.${{ matrix.platform }}.tar.gz
+          target: ${{ matrix.platform }}
           filename: rootfs.tar.gz
-          
+
       - name: Write file from base64 string
         id: write_file
         uses: timheuer/base64-to-file@v1
         with:
-          fileName: "ArchWSL-Appx-Test.pfx"
+          fileName: 'ArchWSL-Appx-Test.pfx'
           encodedString: ${{ secrets.APPX_TEST_CERTIFICATE }}
 
       - name: Import certificate
-        working-directory: ${{env.GITHUB_WORKSPACE}}
+        working-directory: ${{ github.workspace }}
         run: Import-PfxCertificate -FilePath ${{ steps.write_file.outputs.filePath }} -CertStoreLocation Cert:\CurrentUser\My -Password (ConvertTo-SecureString -String $env:APPX_CERTIFICATE_PASSWORD -Force -AsPlainText)
 
       - name: Restore NuGet packages
-        working-directory: ${{env.GITHUB_WORKSPACE}}
-        run: nuget restore ${{env.SOLUTION_FILE_PATH}}
+        working-directory: ${{ github.workspace }}
+        run: nuget restore ${{ env.SOLUTION_FILE_PATH }}
 
       - name: Build solution
-        working-directory: ${{env.GITHUB_WORKSPACE}}
-        run: python build.py --target=build --config=release --platform=${{matrix.arch}}
+        working-directory: ${{ github.workspace }}
+        run: python build.py --target=build --config=${{ matrix.target }} --platform=${{ matrix.platform }}
