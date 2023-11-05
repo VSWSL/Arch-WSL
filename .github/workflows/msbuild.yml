@@ -38,9 +38,9 @@ jobs:
         id: convert_x64
         run: |
           if ("${{ matrix.platform }}" -eq "x64") {
-              Write-Host "::set-output name=platform::amd64"
+              "platform=amd64" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
           } else {
-              Write-Host "::set-output name=platform::${{ matrix.platform }}"
+              "platform=${{ matrix.platform }}" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
           }
 
       - uses: suisei-cn/actions-download-file@v1.4.0
