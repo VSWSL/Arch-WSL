@@ -60,3 +60,9 @@ jobs:
       - name: Build solution
         working-directory: ${{ github.workspace }}
         run: python build.py --target=build --config=${{ matrix.target }} --platform=${{ matrix.platform }}
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: ArchWSL-Appx-${{ matrix.platform }}-${{ matrix.target }}
+          path: AppPackages/ArchWSL-Appx/ArchWSL-Appx_*/ArchWSL-Appx_*.*
