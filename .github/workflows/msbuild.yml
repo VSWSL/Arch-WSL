@@ -71,7 +71,7 @@ jobs:
         run: python build.py --target=build --config=${{ matrix.target }} --platform=${{ matrix.platform }}
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ArchWSL-Appx-${{ matrix.platform }}-${{ matrix.target }}
           path: AppPackages/ArchWSL-Appx/ArchWSL-Appx_*/ArchWSL-Appx_*.*
