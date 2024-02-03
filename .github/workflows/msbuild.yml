@@ -43,7 +43,7 @@ jobs:
               "platform=${{ matrix.platform }}" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
           }
 
-      - uses: suisei-cn/actions-download-file@v1.4.0
+      - uses: suisei-cn/actions-download-file@v1.6.0
         id: downloadfile # Remember to give an ID if you need the output filename
         name: Download rootfs
         with:
