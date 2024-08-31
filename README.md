@@ -53,6 +53,13 @@
 
 ***Note*** - The password entering feild does not display your password but it still records it
 
+## FAQ
+
+### [error] cannot open locale definition file `****': No such file or directory
+
+Please just reinstall `glibc`, then everything will be ok!
+> This is because the docker image that is heavily stripped!
+
 ## Build
 
 ### Prerequisites
