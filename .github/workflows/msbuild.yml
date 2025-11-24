@@ -24,7 +24,7 @@ jobs:
         target: [debug, release]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
       - name: Add MSBuild to PATH
         uses: microsoft/setup-msbuild@v2
