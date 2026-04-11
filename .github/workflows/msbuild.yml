@@ -53,7 +53,7 @@ jobs:
 
       - name: Write file from base64 string
         id: write_file
-        uses: timheuer/base64-to-file@v3.0.0
+        uses: timheuer/base64-to-file@v3
         with:
           fileName: "ArchWSL-Appx-Test.pfx"
           encodedString: ${{ secrets.APPX_TEST_CERTIFICATE }}
