@@ -24,13 +24,13 @@ jobs:
         target: [debug, release]
 
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6.0.2
 
       - name: Add MSBuild to PATH
-        uses: microsoft/setup-msbuild@v2
+        uses: microsoft/setup-msbuild@v3.0.0
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6.2.0
         with:
           python-version: "3.11"
 
@@ -43,7 +43,7 @@ jobs:
               "platform=${{ matrix.platform }}" | Out-File -FilePath $env:GITHUB_OUTPUT -Append
           }
 
-      - uses: suisei-cn/actions-download-file@v1.6.0
+      - uses: suisei-cn/actions-download-file@v1.6.1
         id: downloadfile # Remember to give an ID if you need the output filename
         name: Download rootfs
         with:
@@ -53,7 +53,7 @@ jobs:
 
       - name: Write file from base64 string
         id: write_file
-        uses: timheuer/base64-to-file@v1
+        uses: timheuer/base64-to-file@v3.0.0
         with:
           fileName: "ArchWSL-Appx-Test.pfx"
           encodedString: ${{ secrets.APPX_TEST_CERTIFICATE }}
@@ -71,7 +71,7 @@ jobs:
         run: python build.py --target=build --config=${{ matrix.target }} --platform=${{ matrix.platform }}
 
       - name: Upload artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7.0.1
         with:
           name: ArchWSL-Appx-${{ matrix.platform }}-${{ matrix.target }}
           path: AppPackages/ArchWSL-Appx/ArchWSL-Appx_*/ArchWSL-Appx_*.*
