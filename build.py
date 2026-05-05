@@ -4,7 +4,7 @@ import shutil
 
 PROGRAM_FILES = os.environ["ProgramFiles"]
 VISUAL_STUDIO_INSTALLED_VERSION = 2022
-VISUAL_STUDIO_INSTALLED_VARIANT = ["Community", "Professional", "Enterprise"]
+VISUAL_STUDIO_INSTALLED_VARIANT = ["Community", "Professional", "Enterprise", "BuildTools"]
 
 MS_BUILD_PATH = '{}\\Microsoft Visual Studio\\{}\\{}\\MSBuild\\Current\\Bin\\MSBuild.exe'
 
