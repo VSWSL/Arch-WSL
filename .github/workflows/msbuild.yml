@@ -17,7 +17,7 @@ permissions:
 
 jobs:
   build:
-    runs-on: windows-latest
+    runs-on: blacksmith-4vcpu-windows-2025
     strategy:
       matrix:
         platform: [arm64, x64]
